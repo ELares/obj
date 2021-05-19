@@ -1,4 +1,4 @@
-package obj
+package caster
 
 import (
 	"math"
@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestParseToInt(t *testing.T) {
+func TestCasterToInt(t *testing.T) {
 	testcases := []struct {
 		name string
 
@@ -186,10 +186,10 @@ func TestParseToInt(t *testing.T) {
 		},
 	}
 
-	ip := NewParser()
+	c := NewCaster()
 	for _, tc := range testcases {
 		t.Run(tc.name, func(t *testing.T) {
-			result := ip.ToInt(tc.input, tc.inputDef)
+			result := c.ToInt(tc.input, tc.inputDef)
 			assert.Equal(t, tc.exp, result)
 		})
 	}

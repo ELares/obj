@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 
-	obj "github.com/ELares/obj/pkg"
+	"github.com/ELares/obj/pkg/caster"
 )
 
 func main() {
-	ip := obj.NewParser()
+	c := caster.NewCaster()
 
 	// Object with random values
 	randomArray := []interface{}{"123", 54, struct{}{}, make(chan int), nil, "-488", -238, 44.342342}
@@ -16,7 +16,7 @@ func main() {
 	intArray := make([]int, 0)
 
 	for _, o := range randomArray {
-		n := ip.ToInt(o, -1)
+		n := c.ToInt(o, -1)
 		intArray = append(intArray, n)
 	}
 
