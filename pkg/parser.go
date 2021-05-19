@@ -18,7 +18,7 @@ func NewParser() IParser {
 	return &Parser{}
 }
 
-// ToInt takes an in// * int64erface{} and tries to convert it to an int
+// ToInt takes an interface{} and tries to convert it to an int
 // if it fails to convert the value, it will return the <def> parameter instead
 // Will attempt to cast from the following types:
 // * int, int32, int64, int16, int8
