@@ -1,11 +1,3 @@
-# obj
-A repo to handle common tasks related to `interface{}` in go.
-
-## Parser
-* Array with random items
-* Convert all the items to `int`
-
-```go
 package main
 
 import (
@@ -31,8 +23,3 @@ func main() {
 	// Print results
 	fmt.Printf("%v\n", intArray)
 }
-```
-## Output
-```console
-[123 54 -1 -1 -1 -488 -238 44]
-```
