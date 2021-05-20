@@ -5,6 +5,14 @@ import (
 	"strconv"
 )
 
+const (
+	FLOAT32_MAXINT = float32(math.MaxInt64)
+	FLOAT64_MAXINT = float64(math.MaxInt64)
+
+	FLOAT32_MININT = float32(math.MinInt64)
+	FLOAT64_MININT = float64(math.MinInt64)
+)
+
 // ToInt takes an interface{} and tries to convert it to an int
 // if it fails to convert the value, it will return the <def> parameter instead.
 // Will attempt to cast from the following types:
@@ -57,7 +65,17 @@ func (c *Caster) ToInt(o interface{}, def int) int {
 // if there's a max/min overflow then the default value
 // supplied will be returned
 func (c *Caster) Float32ToInt(f float32, def int) int {
-	return c.Float64ToInt(float64(f), def)
+	// MAX OVERFLOW
+	if f > FLOAT32_MAXINT {
+		return def
+	}
+
+	// MIN OVERFLOW
+	if f < FLOAT32_MININT {
+		return def
+	}
+
+	return int(f)
 }
 
 // Float64ToInt tries to convert float64 type to an int
@@ -65,12 +83,12 @@ func (c *Caster) Float32ToInt(f float32, def int) int {
 // supplied will be returned
 func (c *Caster) Float64ToInt(f float64, def int) int {
 	// MAX OVERFLOW
-	if f > float64(math.MaxInt64) {
+	if f > FLOAT64_MAXINT {
 		return def
 	}
 
 	// MIN OVERFLOW
-	if f < float64(math.MinInt64) {
+	if f < FLOAT64_MININT {
 		return def
 	}
 

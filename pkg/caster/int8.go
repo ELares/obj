@@ -5,6 +5,22 @@ import (
 	"strconv"
 )
 
+const (
+	INT_MAXINT8     = int(math.MaxInt8)
+	INT16_MAXINT8   = int16(math.MaxInt8)
+	INT32_MAXINT8   = int32(math.MaxInt8)
+	INT64_MAXINT8   = int64(math.MaxInt8)
+	FLOAT32_MAXINT8 = float32(math.MaxInt8)
+	FLOAT64_MAXINT8 = float64(math.MaxInt8)
+
+	INT_MININT8     = int(math.MinInt8)
+	INT16_MININT8   = int16(math.MinInt8)
+	INT32_MININT8   = int32(math.MinInt8)
+	INT64_MININT8   = int64(math.MinInt8)
+	FLOAT32_MININT8 = float32(math.MinInt8)
+	FLOAT64_MININT8 = float64(math.MinInt8)
+)
+
 // ToInt takes an interface{} and tries to convert it to an int8
 // if it fails to convert the value, it will return the <def> parameter instead.
 // Will attempt to cast from the following types:
@@ -55,12 +71,12 @@ func (c *Caster) ToInt8(o interface{}, def int8) int8 {
 
 func (c *Caster) IntToInt8(n int, def int8) int8 {
 	// MAX OVERFLOW
-	if n > int(math.MaxInt8) {
+	if n > INT_MAXINT8 {
 		return def
 	}
 
 	// MIN OVERFLOW
-	if n < int(math.MinInt8) {
+	if n < INT_MININT8 {
 		return def
 	}
 
@@ -69,12 +85,12 @@ func (c *Caster) IntToInt8(n int, def int8) int8 {
 
 func (c *Caster) Int16ToInt8(n int16, def int8) int8 {
 	// MAX OVERFLOW
-	if n > int16(math.MaxInt8) {
+	if n > INT16_MAXINT8 {
 		return def
 	}
 
 	// MIN OVERFLOW
-	if n < int16(math.MinInt8) {
+	if n < INT16_MININT8 {
 		return def
 	}
 
@@ -83,12 +99,12 @@ func (c *Caster) Int16ToInt8(n int16, def int8) int8 {
 
 func (c *Caster) Int32ToInt8(n int32, def int8) int8 {
 	// MAX OVERFLOW
-	if n > int32(math.MaxInt8) {
+	if n > INT32_MAXINT8 {
 		return def
 	}
 
 	// MIN OVERFLOW
-	if n < int32(math.MinInt8) {
+	if n < INT32_MININT8 {
 		return def
 	}
 
@@ -97,12 +113,12 @@ func (c *Caster) Int32ToInt8(n int32, def int8) int8 {
 
 func (c *Caster) Int64ToInt8(n int64, def int8) int8 {
 	// MAX OVERFLOW
-	if n > int64(math.MaxInt8) {
+	if n > INT64_MAXINT8 {
 		return def
 	}
 
 	// MIN OVERFLOW
-	if n < int64(math.MinInt8) {
+	if n < INT64_MININT8 {
 		return def
 	}
 
@@ -114,12 +130,12 @@ func (c *Caster) Int64ToInt8(n int64, def int8) int8 {
 // supplied will be returned
 func (c *Caster) Float32ToInt8(f float32, def int8) int8 {
 	// MAX OVERFLOW
-	if f > float32(math.MaxInt8) {
+	if f > FLOAT32_MAXINT8 {
 		return def
 	}
 
 	// MIN OVERFLOW
-	if f < float32(math.MinInt8) {
+	if f < FLOAT32_MININT8 {
 		return def
 	}
 
@@ -131,12 +147,12 @@ func (c *Caster) Float32ToInt8(f float32, def int8) int8 {
 // supplied will be returned
 func (c *Caster) Float64ToInt8(f float64, def int8) int8 {
 	// MAX OVERFLOW
-	if f > float64(math.MaxInt8) {
+	if f > FLOAT64_MAXINT8 {
 		return def
 	}
 
 	// MIN OVERFLOW
-	if f < float64(math.MinInt8) {
+	if f < FLOAT64_MININT8 {
 		return def
 	}
 

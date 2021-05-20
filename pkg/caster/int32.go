@@ -5,6 +5,18 @@ import (
 	"strconv"
 )
 
+const (
+	INT_MAXINT32     = int(math.MaxInt32)
+	INT64_MAXINT32   = int64(math.MaxInt32)
+	FLOAT32_MAXINT32 = float32(math.MaxInt32)
+	FLOAT64_MAXINT32 = float64(math.MaxInt32)
+
+	INT_MININT32     = int(math.MinInt32)
+	INT64_MININT32   = int64(math.MinInt32)
+	FLOAT32_MININT32 = float32(math.MinInt32)
+	FLOAT64_MININT32 = float64(math.MinInt32)
+)
+
 // ToInt32 takes an interface{} and tries to convert it to an int32
 // if it fails to convert the value, it will return the <def> parameter instead.
 // Will attempt to cast from the following types:
@@ -57,7 +69,17 @@ func (c *Caster) ToInt32(o interface{}, def int32) int32 {
 // if there's a max/min overflow then the default value
 // supplied will be returned
 func (c *Caster) IntToInt32(n int, def int32) int32 {
-	return c.Int64ToInt32(int64(n), def)
+	// MAX OVERFLOW
+	if n > INT_MAXINT32 {
+		return def
+	}
+
+	// MIN OVERFLOW
+	if n < INT_MININT32 {
+		return def
+	}
+
+	return int32(n)
 }
 
 // Int64ToInt32 tries to convert int64 type to an int32
@@ -65,12 +87,12 @@ func (c *Caster) IntToInt32(n int, def int32) int32 {
 // supplied will be returned
 func (c *Caster) Int64ToInt32(n int64, def int32) int32 {
 	// MAX OVERFLOW
-	if n > int64(math.MaxInt32) {
+	if n > INT64_MAXINT32 {
 		return def
 	}
 
 	// MIN OVERFLOW
-	if n < int64(math.MinInt32) {
+	if n < INT64_MININT32 {
 		return def
 	}
 
@@ -81,7 +103,17 @@ func (c *Caster) Int64ToInt32(n int64, def int32) int32 {
 // if there's a max/min overflow then the default value
 // supplied will be returned
 func (c *Caster) Float32ToInt32(f float32, def int32) int32 {
-	return c.Float64ToInt32(float64(f), def)
+	// MAX OVERFLOW
+	if f > FLOAT32_MAXINT32 {
+		return def
+	}
+
+	// MIN OVERFLOW
+	if f < FLOAT32_MININT32 {
+		return def
+	}
+
+	return int32(f)
 }
 
 // Float64ToInt tries to convert float64 type to an int
@@ -89,12 +121,12 @@ func (c *Caster) Float32ToInt32(f float32, def int32) int32 {
 // supplied will be returned
 func (c *Caster) Float64ToInt32(f float64, def int32) int32 {
 	// MAX OVERFLOW
-	if f > float64(math.MaxInt32) {
+	if f > FLOAT64_MAXINT32 {
 		return def
 	}
 
 	// MIN OVERFLOW
-	if f < float64(math.MinInt32) {
+	if f < FLOAT64_MININT32 {
 		return def
 	}
 
