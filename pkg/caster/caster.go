@@ -8,6 +8,7 @@ type (
 		ToInt16(o interface{}, def int16) int16
 		ToInt32(o interface{}, def int32) int32
 		ToInt64(o interface{}, def int64) int64
+		ToFloat32(o interface{}, def float32) float32
 
 		IntToInt8(n int, def int8) int8
 		IntToInt16(n int, def int16) int16
@@ -33,6 +34,7 @@ type (
 		Float64ToInt16(f float64, def int16) int16
 		Float64ToInt32(f float64, def int32) int32
 		Float64ToInt64(f float64, def int64) int64
+		Float64ToFloat32(f float64, def float32) float32
 	}
 
 	// Caster implements ICaster interface
